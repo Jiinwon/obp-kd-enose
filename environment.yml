@@ -1,0 +1,14 @@
+name: obp-kd-enose
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch
+  - cudatoolkit=12.0
+  - numpy
+  - pandas
+  - scikit-learn
+  - pyyaml
+  - matplotlib
+  - mlflow

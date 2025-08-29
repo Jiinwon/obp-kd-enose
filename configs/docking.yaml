@@ -1,0 +1,6 @@
+# Docking configuration
+obp_list: []  # list of OBPs
+voc_list: []  # list of VOCs
+options:
+  exhaustiveness: 8
+prior_schema: []
