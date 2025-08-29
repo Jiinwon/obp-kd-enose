@@ -1,4 +1,22 @@
-# User-side inference configuration
-model_path: models/student.onnx
-input: serial  # or csv
-threshold: 0.5
+# Configuration for user-side inference demo
+
+model:
+  onnx: release/student.onnx
+
+input:
+  source: serial          # or 'csv'
+  serial_port: /dev/ttyUSB0
+  baudrate: 115200
+  csv_path: data/demo.csv  # used when source=csv
+
+window:
+  size: 128
+  step: 1
+
+classes:
+  - ethanol
+  - methane
+
+thresholds:
+  ethanol: 0.5
+  methane: 0.5
