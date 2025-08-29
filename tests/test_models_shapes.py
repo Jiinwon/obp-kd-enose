@@ -1,4 +1,6 @@
-import torch
+import pytest
+
+torch = pytest.importorskip("torch")
 
 from src.models.teacher import TeacherModel
 from src.models.student import StudentModel

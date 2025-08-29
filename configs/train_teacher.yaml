@@ -1,8 +1,32 @@
-# Training hyperparameters for teacher model
+# Example training configuration for teacher model
+# All paths and hyperparameters are defined here.
+
+paths:
+  train_data: data/processed/train.parquet
+  val_data: data/processed/val.parquet
+  prior: data/priors/prior.json
+  output_dir: runs/teacher
+
+classes:
+  - ethanol
+  - methane
+
 model:
   type: teacher
+  backbone: tcn      # or cnn
+  channels: 32
+  prior_dim: 7       # matches features in prior.json
+
 optimizer:
+  name: adam
   lr: 0.001
-epochs: 10
-batch_size: 32
-kd: false
+
+training:
+  epochs: 20
+  batch_size: 64
+  seed: 42
+  num_workers: 4
+
+# Knowledge distillation is disabled for teacher training
+kd:
+  enabled: false

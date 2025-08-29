@@ -1,15 +1,20 @@
 """Signal preprocessing utilities."""
 from __future__ import annotations
 
-import numpy as np
+from typing import Iterable, List
 
 
-def warmup_cut(x: np.ndarray, n: int = 5) -> np.ndarray:
+def _to_list(x: Iterable) -> List[float]:
+    return list(x)
+
+
+def warmup_cut(x: Iterable, n: int = 5):
     """Remove an initial warm-up period from the signal."""
-    return np.asarray(x)[n:]
+    return _to_list(x)[n:]
 
 
-def center(x: np.ndarray) -> np.ndarray:
+def center(x: Iterable):
     """Mean-center the signal."""
-    x = np.asarray(x)
-    return x - x.mean()
+    data = _to_list(x)
+    mean = sum(data) / len(data) if data else 0.0
+    return [v - mean for v in data]
