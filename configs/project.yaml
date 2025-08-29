@@ -1,0 +1,7 @@
+# Global project metadata
+name: obp-kd-enose
+sensors:
+  - SGP30
+  - CCS811
+  - BME280
+class_names: []  # fill with target VOC classes

@@ -1,0 +1,3 @@
+# Lightweight dependencies for user inference
+torch
+pyyaml
