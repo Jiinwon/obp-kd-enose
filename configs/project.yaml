@@ -1,7 +1,4 @@
-# Global project metadata
-name: obp-kd-enose
-sensors:
-  - SGP30
-  - CCS811
-  - BME280
-class_names: []  # fill with target VOC classes
+project_name: obp-kd-enose
+classes: [none, ipa, acetone, ethanol, toluene, acetic_acid]
+sensors: [sgp30_tvoc_ppb, ccs811_tvoc_ppb, bme280_temp_C, bme280_rh_pct]
+artifact_dir: artifacts
