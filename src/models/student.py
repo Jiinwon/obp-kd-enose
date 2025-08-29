@@ -12,6 +12,7 @@ class StudentModel(nn.Module):
 
     def __init__(self, num_classes: int = 3, hidden_dim: int = 32) -> None:
         super().__init__()
+        # TODO: swap SimpleCNN with a compact architecture suitable for MCUs.
         self.backbone = SimpleCNN(in_channels=1, out_dim=hidden_dim)
         self.classifier = nn.Linear(self.backbone.out_dim, num_classes)
         self.regressor = nn.Linear(self.backbone.out_dim, 1)
@@ -19,8 +20,17 @@ class StudentModel(nn.Module):
     def forward(
         self, x: torch.Tensor, *, return_tvoc: bool = False
     ) -> torch.Tensor | tuple[torch.Tensor, torch.Tensor]:
-        """Compute logits (and optionally a TVOC estimate)."""
+        """Compute logits (and optionally a TVOC estimate).
 
+        Parameters
+        ----------
+        x: torch.Tensor
+            Input time series of shape ``(B, 1, L)``.
+        return_tvoc: bool, optional
+            When ``True`` also return a ``(B,)`` TVOC estimate.
+        """
+
+        # TODO: add normalisation and optional attention mechanisms.
         feat = self.backbone(x)
         logits = self.classifier(feat)
         tvoc = self.regressor(feat).squeeze(-1)
