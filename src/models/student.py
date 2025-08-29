@@ -8,13 +8,25 @@ from .backbones import SimpleCNN
 
 
 class StudentModel(nn.Module):
-    """Time-series only classifier."""
+    """Light‑weight time‑series model used for deployment."""
 
-    def __init__(self, num_classes: int = 3) -> None:
+    def __init__(self, num_classes: int = 3, hidden_dim: int = 32) -> None:
         super().__init__()
-        self.backbone = SimpleCNN()
+        self.backbone = SimpleCNN(in_channels=1, out_dim=hidden_dim)
         self.classifier = nn.Linear(self.backbone.out_dim, num_classes)
+        self.regressor = nn.Linear(self.backbone.out_dim, 1)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(
+        self, x: torch.Tensor, *, return_tvoc: bool = False
+    ) -> torch.Tensor | tuple[torch.Tensor, torch.Tensor]:
+        """Compute logits (and optionally a TVOC estimate)."""
+
         feat = self.backbone(x)
-        return self.classifier(feat)
+        logits = self.classifier(feat)
+        tvoc = self.regressor(feat).squeeze(-1)
+        if return_tvoc:
+            return logits, tvoc
+        return logits
+
+
+__all__ = ["StudentModel"]

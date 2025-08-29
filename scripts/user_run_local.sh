@@ -17,3 +17,4 @@ mkdir -p "$RELEASE_DIR"
 # curl -L "$BUNDLE_URL" | tar -xz -C "$RELEASE_DIR"  # commented placeholder
 
 python -m src.infer.user_demo --config configs/user_infer.yaml
+
