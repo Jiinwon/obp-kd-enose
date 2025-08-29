@@ -1,0 +1,4 @@
+# User-side inference configuration
+model_path: models/student.onnx
+input: serial  # or csv
+threshold: 0.5

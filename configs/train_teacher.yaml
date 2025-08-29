@@ -1,0 +1,8 @@
+# Training hyperparameters for teacher model
+model:
+  type: teacher
+optimizer:
+  lr: 0.001
+epochs: 10
+batch_size: 32
+kd: false
