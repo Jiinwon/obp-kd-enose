@@ -1,0 +1,8 @@
+# Development and training dependencies
+torch
+numpy
+pandas
+scikit-learn
+pyyaml
+matplotlib
+mlflow

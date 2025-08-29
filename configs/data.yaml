@@ -1,0 +1,7 @@
+# Data configuration
+raw_path: data/raw
+processed_path: data/processed
+window_size: 128
+fs: 5  # Hz
+train_split: 0.8
+val_split: 0.2
