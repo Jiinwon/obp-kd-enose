@@ -8,18 +8,10 @@ from .backbones import SimpleCNN
 
 
 class TeacherModel(nn.Module):
-    """Teacher model that fuses time‑series features with docking priors.
+    """Minimal bilinear teacher network.
 
-    Two fusion mechanisms are supported:
-
-    * ``use_mlp=False`` (default): late bilinear fusion ``s_c = zᵀ W p_c``
-    * ``use_mlp=True``: simple MLP on the concatenation ``[z; p_c]``
-
-    In addition to the classification head a small regression head predicting
-    TVOC (total volatile organic compound) concentration is provided.  For
-    backwards compatibility the forward method returns only the classification
-    logits by default but the regression output can be requested via
-    ``return_tvoc=True``.
+    TODO: replace with full architecture that performs knowledge distillation
+    and additional regression heads.
     """
 
     def __init__(
@@ -27,59 +19,36 @@ class TeacherModel(nn.Module):
         num_classes: int = 3,
         prior_dim: int = 4,
         hidden_dim: int = 32,
-        *,
-        use_mlp: bool = False,
     ) -> None:
         super().__init__()
+        # TODO: swap SimpleCNN for a stronger encoder.
         self.backbone = SimpleCNN(in_channels=1, out_dim=hidden_dim)
-        self.prior_fc = nn.Linear(prior_dim, hidden_dim)
-        self.use_mlp = use_mlp
+        # Bilinear projection matrix W:[H,D]
+        self.weight = nn.Parameter(torch.randn(hidden_dim, prior_dim))
+        self.num_classes = num_classes
 
-        if use_mlp:
-            self.fusion = nn.Sequential(
-                nn.Linear(hidden_dim * 2, hidden_dim),
-                nn.ReLU(),
-            )
-        else:
-            # Bilinear weight matrix W used in z^T W p
-            self.weight = nn.Parameter(torch.randn(hidden_dim, hidden_dim))
-
-        self.classifier = nn.Linear(hidden_dim, num_classes)
-        self.regressor = nn.Linear(hidden_dim, 1)
-
-    def _fuse(self, z: torch.Tensor, p: torch.Tensor) -> torch.Tensor:
-        if self.use_mlp:
-            return self.fusion(torch.cat([z, p], dim=1))
-        # Bilinear late fusion: (z W) ⊙ p
-        return torch.matmul(z, self.weight) * p
-
-    def forward(
-        self,
-        x: torch.Tensor,
-        prior: torch.Tensor,
-        *,
-        return_tvoc: bool = False,
-    ) -> torch.Tensor | tuple[torch.Tensor, torch.Tensor]:
-        """Compute logits (and optionally TVOC estimate).
+    def forward(self, x: torch.Tensor, priors: torch.Tensor) -> torch.Tensor:
+        """Compute class probabilities.
 
         Parameters
         ----------
-        x:
-            Input time‑series of shape ``(B, C, L)``.
-        prior:
-            Prior vectors of shape ``(B, prior_dim)``.
-        return_tvoc:
-            When ``True`` also return the regression output.
+        x: torch.Tensor
+            Sensor sequence of shape ``(B, 1, L)``.
+        priors: torch.Tensor
+            Prior matrix ``P`` of shape ``(C, D)`` for ``C`` classes.
+
+        Returns
+        -------
+        torch.Tensor
+            Class probabilities ``(B, C)``.
         """
 
+        # z: [B, H]
         z = self.backbone(x)
-        p = torch.relu(self.prior_fc(prior))
-        feat = self._fuse(z, p)
-        logits = self.classifier(feat)
-        tvoc = self.regressor(feat).squeeze(-1)
-        if return_tvoc:
-            return logits, tvoc
-        return logits
+        # scores: [B, C] via bilinear form z @ W @ P.T
+        scores = z @ self.weight @ priors.T
+        probs = scores.softmax(dim=1)
+        return probs
 
 
 __all__ = ["TeacherModel"]
