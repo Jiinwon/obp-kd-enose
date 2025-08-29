@@ -1,0 +1,5 @@
+# Evaluation settings
+metrics:
+  - roc_auc
+  - f1
+cv_folds: 5
