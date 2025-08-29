@@ -1,0 +1,11 @@
+# Training hyperparameters for student model
+model:
+  type: student
+optimizer:
+  lr: 0.001
+epochs: 10
+batch_size: 32
+kd:
+  enabled: true
+  temperature: 2.0
+  lambda: 0.5
