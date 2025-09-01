@@ -1,7 +1,7 @@
 .PHONY: setup train-teacher train-student eval user-demo
 
 setup:
-	python3 -m venv .venv || true
+	python -m venv .venv || true
 	. .venv/bin/activate && pip install -U pip && pip install -r requirements.txt
 
 train-teacher:

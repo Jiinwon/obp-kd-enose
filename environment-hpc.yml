@@ -1,0 +1,55 @@
+name: gnina_env
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python & pip
+  - python=3.9
+  - pip
+
+  # Core scientific stack
+  - numpy
+  - sympy
+  - mkl
+
+  # PyTorch (HPC CUDA 모듈 활용)
+  - pytorch=2.1.2
+  - torchvision
+  - torchaudio
+
+  # Build tools (cmake/ninja만, gcc는 module load gnu12 사용)
+  - cmake
+  - ninja
+
+  # Chemistry / docking deps
+  - openbabel
+  - boost-cpp
+  - jsoncpp
+  - yaml-cpp
+
+  # Utilities
+  - tqdm
+  - requests
+  - pyyaml
+
+  # Fonts & rendering (for reports/plots)
+  - cairo
+  - fontconfig
+  - freetype
+
+  # MLflow & experiment tracking
+  - mlflow
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+
+  # pip-only packages
+  - pip:
+      - molgrid==0.5.3
+      - pybind11
+      - pytest
+      - pillow
+      - triton

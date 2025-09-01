@@ -1,0 +1,63 @@
+name: gnina_env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python & pip
+  - python=3.9
+  - pip
+
+  # Core scientific stack
+  - numpy
+  - sympy
+  - mkl
+
+  # PyTorch (GPU, CUDA 12.1)
+  - pytorch=2.1.2
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+
+  # CUDA / NVIDIA runtime libraries
+  - cudnn
+  - nccl
+
+  # Build tools
+  - cmake
+  - ninja
+  - gcc_linux-64=11.2.0
+  - gxx_linux-64=11.2.0
+
+  # Chemistry / docking deps
+  - openbabel
+  - boost-cpp
+  - jsoncpp
+  - yaml-cpp
+
+  # Utilities
+  - tqdm
+  - requests
+  - pyyaml
+
+  # Fonts & rendering (for reports/plots)
+  - cairo
+  - fontconfig
+  - freetype
+
+  # MLflow & experiment tracking
+  - mlflow
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+
+  # pip-only packages
+  - pip:
+      - molgrid==0.5.3
+      - pybind11
+      - pytest
+      - pillow
+      - triton
