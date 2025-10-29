@@ -1,0 +1,7 @@
+inherit: "configs/preprocess/common.yaml"
+overrides:
+  window: {size: 256, stride: 64}
+  rr0: {enabled: true, mode: "ratio", baseline: {method: "median_k", k: 64}}
+  detrend: {enabled: true, method: "poly", poly_deg: 1}
+  standardize: {enabled: true, per_device: true}
+  temp_humid: {enabled: false}
