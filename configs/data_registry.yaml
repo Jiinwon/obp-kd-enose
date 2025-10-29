@@ -1,0 +1,159 @@
+# 공통 스키마: dataset별 원본 필드를 표준 필드로 매핑하고, split을 선언한다.
+# 표준 필드 키: dataset, session_id, device_id, sensor_cols, time, gas, conc, temp, humid, stage, batch_id, sampling_rate
+# 실제 경로는 사용 환경에 맞게 수정한다.
+
+uci_drift:
+  root: "data/uci_drift"         # 예: npz 또는 csv 배치 디렉토리
+  files:
+    pattern: "*.csv"              # 또는 "*.npz". 1단계 테스트용으로 csv 가정
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15"]
+    gas: "gas"
+    conc: "conc"                  # 없으면 null 허용
+    temp: null
+    humid: null
+    stage: null
+    batch_id: "batch"             # 1..10
+    device_id: 0
+    session_id: "file_id"
+    sampling_rate: 100.0
+  splits:
+    train: {include_batches: [1,2,3,4,5,6]}
+    val:   {include_batches: [7]}
+    test:  {include_batches: [8,9,10]}
+  notes: "UCI Drift 배치 기반 forward split."
+
+twin:
+  root: "data/twin"
+  files:
+    pattern: "*.csv"              # 파일명 예: B5_CO_100ppm_rep1.csv
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1","s2","s3","s4","s5","s6","s7"]
+    gas: "gas"
+    conc: "ppm"
+    temp: null
+    humid: null
+    stage: null
+    batch_id: null
+    device_id: "board"
+    session_id: "file_id"
+    sampling_rate: 100.0
+  splits:
+    # LODO: 테스트용 대상 보드를 지정. 예시는 board=5
+    train: {exclude_devices: [5]}
+    val:   {devices: [4]}
+    test:  {devices: [5]}
+  notes: "장치 간 전이(LODO)."
+
+tempmod:
+  root: "data/tempmod"
+  files:
+    pattern: "*.csv"
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13"]
+    gas: "gas"         # 단일 CO이면 'CO'
+    conc: "ppm"        # 0..20
+    temp: "temp_c"
+    humid: "rh"
+    stage: "stage"
+    batch_id: "day"    # day index
+    device_id: 0
+    session_id: "file_id"
+    sampling_rate: 3.5
+  splits:
+    train: {include_batches: [1,2,3,4,5,6,7,8,9,10]}
+    val:   {include_batches: [11]}
+    test:  {include_batches: [12,13]}
+  notes: "날짜(배치) forward split."
+
+home:
+  root: "data/home"
+  files:
+    pattern: "*.csv"
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1","s2","s3","s4","s5","s6","s7"]
+    gas: "class"      # background/wine/banana
+    conc: null
+    temp: "temp_c"
+    humid: "rh"
+    stage: "stage"
+    batch_id: "month" # 또는 date에서 월 추출
+    device_id: 0
+    session_id: "induction_id"
+    sampling_rate: 1.0
+  splits:
+    # 시간순 정렬 후 80/10/10
+    train: {time_range: {start: "1900-01-01", end: "2099-01-01"}, limit_first_n: 80}
+    val:   {time_range: {start: "1900-01-01", end: "2099-01-01"}, range_index: [80,90]}
+    test:  {time_range: {start: "1900-01-01", end: "2099-01-01"}, range_index: [90,100]}
+  notes: "시간순 분할."
+
+dynamic:
+  root: "data/dynamic"
+  files:
+    pattern: "*.csv"
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1", "s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15"]
+    gas: "mix"        # 예: 'C2H4+CO' 또는 'C2H4+CH4'
+    conc: "ppm"       # 필요시 conc_primary/secondary로 확장
+    temp: null
+    humid: null
+    stage: null
+    batch_id: "session"   # 1 또는 2
+    device_id: 0
+    session_id: "file_id"
+    sampling_rate: 100.0
+  splits:
+    train: {include_batches: [1]}
+    test:  {include_batches: [2]}
+    val:   {include_batches: []}
+  notes: "세션 교차 일반화."
+
+longterm:
+  root: "data/longterm"
+  files:
+    pattern: "*.csv"
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1","s2","s3"]   # 예시
+    gas: "gas"
+    conc: "ppm"
+    temp: null
+    humid: null
+    stage: null
+    batch_id: "month"
+    device_id: 0
+    session_id: "file_id"
+    sampling_rate: 1.0
+  splits:
+    train: {include_batches: [1,2,3,4,5,6,7,8]}
+    val:   {include_batches: [9]}
+    test:  {include_batches: [10,11,12]}
+  notes: "연 장기 드리프트."
+
+pulses:
+  root: "data/pulses"
+  files:
+    pattern: "*.csv"
+  mapping:
+    time: "time"
+    sensor_cols: ["s0","s1","s2","s3"]   # 예시
+    gas: "gas"
+    conc: "ppm"
+    temp: null
+    humid: null
+    stage: "pulse_id"
+    batch_id: null
+    device_id: 0
+    session_id: "file_id"
+    sampling_rate: 50.0
+  splits:
+    train: {time_order: true, ratio: [0.8, 0.1, 0.1]}
+    val:   {}
+    test:  {}
+  notes: "펄스 응답. 상세는 추후 업데이트."

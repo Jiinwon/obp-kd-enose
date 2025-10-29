@@ -7,7 +7,12 @@ requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [{name = "Jinwon Hwang"}]
 
-dependencies = []
+# 1단계: 런타임 의존성(가벼운 것만). torch는 4단계에서 추가한다.
+dependencies = [
+  "PyYAML>=6.0.1",
+  "pandas>=2.2",
+  "numpy>=1.26"
+]
 
 [project.optional-dependencies]
 dev = [
