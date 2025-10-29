@@ -1,0 +1,7 @@
+inherit: "configs/preprocess/common.yaml"
+overrides:
+  window: {size: 128, stride: 32}
+  rr0: {enabled: true, mode: "delta", baseline: {method: "first_k", k: 32}}
+  detrend: {enabled: true, method: "ema", ema_alpha: 0.05}
+  standardize: {enabled: true, per_device: false}
+  temp_humid: {enabled: true, method: "linreg"}
