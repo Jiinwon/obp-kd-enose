@@ -1,33 +1,21 @@
-# 공통 전처리 기본값(데이터셋별 yaml에서 override)
 window:
-  size: 256           # 샘플 수 기준
-  stride: 64
+  size: 120
+  stride: 60
   drop_last: true
-
 rr0:
   enabled: true
-  mode: "ratio"       # ["ratio","delta"]
+  mode: ratio
   baseline:
-    method: "first_k" # ["first_k","median_k"]
-    k: 50
-
+    method: first_k
+    k: 30
 detrend:
   enabled: true
-  method: "ema"       # ["ema","poly"]
-  ema_alpha: 0.02     # 0<alpha<=1
-  poly_deg: 1         # method=poly일 때
-
+  method: ema
+  ema_alpha: 0.05
+  poly_deg: 1
 standardize:
   enabled: true
-  method: "zscore"    # 향후 "robust" 확장 가능
+  per_device: true
   eps: 1.0e-6
-  per_device: true    # device별로 통계 분리(메타 device_id 필요)
-
 temp_humid:
-  enabled: false
-  method: "linreg"    # 단순 선형 보정 X' = X - (a*T + b*H + c)
-  fit_only_when_available: true
-
-io:
-  save_windows_npz: false
-  out_dir: "processed"
+  enabled: true

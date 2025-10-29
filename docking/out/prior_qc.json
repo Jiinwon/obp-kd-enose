@@ -1,0 +1,305 @@
+{
+  "obps": [
+    "OBP1",
+    "OBP2",
+    "OBP3",
+    "OBP4",
+    "OBP5",
+    "OBP6",
+    "OBP7"
+  ],
+  "metrics": [
+    "min_affinity",
+    "p25_affinity",
+    "median_affinity",
+    "p75_affinity",
+    "mean_affinity",
+    "std_affinity",
+    "best_rmsd",
+    "top3_mean_affinity"
+  ],
+  "rows": 0,
+  "columns": 56,
+  "column_stats": {
+    "OBP1__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP1__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP2__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP3__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP4__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP5__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP6__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__min_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__p25_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__median_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__p75_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__std_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__best_rmsd": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    },
+    "OBP7__top3_mean_affinity": {
+      "mean": NaN,
+      "std": NaN,
+      "na_count": 0
+    }
+  }
+}
