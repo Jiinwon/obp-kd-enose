@@ -1,17 +1,23 @@
-.PHONY: setup train-teacher train-student eval user-demo
+.PHONY: install-dev fmt lint typecheck test precommit ci
 
-setup:
-	python -m venv .venv || true
-	. .venv/bin/activate && pip install -U pip && pip install -r requirements.txt
+install-dev:
+pip install -e ".[dev]"
+pre-commit install
 
-train-teacher:
-	python -m src.train.train_teacher --config configs/train_teacher.yaml
+fmt:
+ruff format .
+black .
 
-train-student:
-	python -m src.train.train_student --config configs/train_student.yaml
+lint:
+ruff check .
 
-eval:
-	python -m src.eval.evaluate --config configs/eval.yaml
+typecheck:
+mypy .
 
-user-demo:
-	bash scripts/user_run_local.sh --input sample.csv
+test:
+pytest -q
+
+precommit:
+pre-commit run --all-files
+
+ci: lint typecheck test
