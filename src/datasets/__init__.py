@@ -1,20 +1,30 @@
-from .base_enose import BaseENoseDataset, load_registry
-from .uci_drift import UCIDriftDataset
-from .twin import TwinDataset
-from .tempmod import TempModDataset
-from .home import HomeDataset
+"""Dataset package exports."""
+from .base_enose import (
+    BaseENoseDataset,
+    SampleMeta,
+    build_dataset,
+    ensure_synthetic_dataset,
+    load_data_registry,
+)
 from .dynamic import DynamicMixtureDataset
+from .home import HomeDataset
 from .longterm import LongTermDataset
 from .pulses import PulsesDataset
+from .tempmod import TempModDataset
+from .twin import TwinDataset
+from .uci_drift_dataset import UCIDriftDataset
 
 __all__ = [
     "BaseENoseDataset",
-    "load_registry",
-    "UCIDriftDataset",
-    "TwinDataset",
-    "TempModDataset",
-    "HomeDataset",
+    "SampleMeta",
+    "build_dataset",
+    "ensure_synthetic_dataset",
+    "load_data_registry",
     "DynamicMixtureDataset",
+    "HomeDataset",
     "LongTermDataset",
     "PulsesDataset",
+    "TempModDataset",
+    "TwinDataset",
+    "UCIDriftDataset",
 ]

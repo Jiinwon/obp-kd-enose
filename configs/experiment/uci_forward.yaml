@@ -1,0 +1,35 @@
+experiment_name: uci_forward_mvp
+seed: 1234
+data:
+  registry: configs/data_registry.yaml
+  dataset_key: uci_drift
+  splits:
+    train: train
+    val: val
+    test: test
+  preprocess:
+    common: configs/preprocess/common.yaml
+    dataset: configs/preprocess/uci_drift.yaml
+  synthetic_ok: true
+  class_names: [ETHANOL, METHANE, TOLUENE]
+prior:
+  table_csv: docking/out/prior_table.csv
+  voc_map: configs/prior/voc_map.yaml
+  default_strategy: mean
+model:
+  type: film_tcn
+  in_channels: 8
+  prior_dim: 56
+  hidden: 64
+  n_blocks: 3
+  kernel_size: 5
+  n_classes: 3
+train:
+  epochs: 2
+  batch_size: 8
+  lr: 0.001
+  weight_decay: 0.0001
+  amp: false
+  log_dir: results/uci_forward_mvp
+loss:
+  lambda_kd: 0.3

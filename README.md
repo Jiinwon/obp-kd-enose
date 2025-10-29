@@ -1,5 +1,10 @@
 # obp-kd-enose
 
+**3-step MVP run:**
+1. `bash scripts/bootstrap_end2end.sh`
+2. Metrics → `results/uci_forward_mvp/metrics.csv`, report → `results/uci_forward_mvp/report.md`
+3. No raw data? Synthetic CSVs + warnings keep the run reproducible.
+
 Scaffold for an e-nose ML/DL pipeline combining docking priors with low-cost
 sensor signals. This repository provides placeholders for data processing,
 model training, knowledge distillation, and user-side inference.

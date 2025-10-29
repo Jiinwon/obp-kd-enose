@@ -29,6 +29,13 @@ def deep_update(base: Dict[str, Any], overrides: Dict[str, Any]) -> Dict[str, An
     return out
 
 
+def warmup_cut(data: Iterable[Any], n: int) -> List[Any]:
+    """Backward-compatible utility that drops the first ``n`` elements."""
+
+    seq = list(data)
+    return seq[int(n) :]
+
+
 def _ema(x: np.ndarray, alpha: float) -> np.ndarray:
     """Exponential moving average(단일 채널)."""
     y = np.empty_like(x, dtype=np.float32)
@@ -119,7 +126,7 @@ def window_tensor(
     if not idx:
         return np.empty((0, C, W), dtype=X.dtype)
     if drop_last:
-        if idx[-1] != T - W:
+        if len(idx) > 1 and idx[-1] != T - W:
             idx = idx[:-1]
             if not idx:
                 return np.empty((0, C, W), dtype=X.dtype)

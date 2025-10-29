@@ -1,7 +1,12 @@
-inherit: "configs/preprocess/common.yaml"
+inherit: common
 overrides:
-  window: {size: 256, stride: 64}
-  rr0: {enabled: true, mode: "ratio", baseline: {method: "first_k", k: 100}}
-  detrend: {enabled: true, method: "ema", ema_alpha: 0.015}
-  standardize: {enabled: true, per_device: false}
-  temp_humid: {enabled: false}
+  window:
+    size: 180
+    stride: 90
+  rr0:
+    baseline:
+      method: median_k
+      k: 50
+  detrend:
+    method: ema
+    ema_alpha: 0.03
