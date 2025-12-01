@@ -13,6 +13,12 @@ from .pulses import PulsesDataset
 from .tempmod import TempModDataset
 from .twin import TwinDataset
 from .uci_drift_dataset import UCIDriftDataset
+from .uci_gsa_features import (
+    BatchSplitConfig,
+    discover_batch_files,
+    load_feature_batches,
+    split_by_batches,
+)
 
 __all__ = [
     "BaseENoseDataset",
@@ -27,4 +33,8 @@ __all__ = [
     "TempModDataset",
     "TwinDataset",
     "UCIDriftDataset",
+    "BatchSplitConfig",
+    "discover_batch_files",
+    "load_feature_batches",
+    "split_by_batches",
 ]
