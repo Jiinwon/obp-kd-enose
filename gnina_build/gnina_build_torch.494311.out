@@ -1,0 +1,70 @@
+[SLURM] Node: n003.hpc
+Thu Oct 16 16:36:41 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 555.42.02              Driver Version: 555.42.02      CUDA Version: 12.5     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        On  |   00000000:B4:00.0 Off |                  N/A |
+| 30%   27C    P8             20W /  350W |       2MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[INFO] CUDA_ARCHITECTURES=86
+-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- The CUDA compiler identification is NVIDIA 12.1.105 with host compiler GNU 12.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home1/won0316/anaconda3/envs/gnina_env/bin/x86_64-conda-linux-gnu-cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home1/won0316/anaconda3/envs/gnina_env/bin/x86_64-conda-linux-gnu-c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /opt/ohpc/pub/cuda/12.1.1/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE
+-- Found CUDA: /opt/ohpc/pub/cuda/12.1.1 (found suitable version "12.1", minimum required is "12.0")
+-- Found Python3: /home1/won0316/anaconda3/envs/gnina_env/bin/python3.9 (found version "3.9.23") found components: Interpreter Development Development.Module Development.Embed
+-- Found ZLIB: /usr/lib64/libz.so (found version "1.2.11")
+-- Found Protobuf: /home1/won0316/anaconda3/envs/gnina_env/lib/libprotobuf.so;-lpthread (found version "4.25.3")
+-- Caffe2: Found protobuf with new-style protobuf targets.
+-- Caffe2: Protobuf version 25.3.0
+-- Found CUDA: /opt/ohpc/pub/cuda/12.1.1 (found version "12.1") 
+-- Found CUDAToolkit: /opt/ohpc/pub/cuda/12.1.1/include (found version "12.1.105") 
+-- Caffe2: CUDA detected: 12.1
+-- Caffe2: CUDA nvcc is: /opt/ohpc/pub/cuda/12.1.1/bin/nvcc
+-- Caffe2: CUDA toolkit directory: /opt/ohpc/pub/cuda/12.1.1
+-- Caffe2: Header version is: 12.1
+-- /opt/ohpc/pub/cuda/12.1.1/lib64/libnvrtc.so shorthash is b51b459d
+-- Found CUDNN: /home1/won0316/libcudnn9/cudnn-linux-x86_64-9.0.0.312_cuda12-archive/lib/libcudnn.so  
+-- USE_CUSPARSELT is set to 0. Compiling without cuSPARSELt support
+-- Autodetected CUDA architecture(s):  8.6
+-- Added CUDA NVCC flags for: -gencode;arch=compute_86,code=sm_86
+-- Found Torch: /home1/won0316/anaconda3/envs/gnina_env/lib/libtorch.so  
+-- Torch found
+-- Found libmolgrid include files at /home1/won0316/anaconda3/envs/gnina_env/include
+-- Found libmolgrid library at /home1/won0316/anaconda3/envs/gnina_env/lib/libmolgrid.so
+-- Found libmolgrid: /home1/won0316/anaconda3/envs/gnina_env/include  
+-- Configuring incomplete, errors occurred!

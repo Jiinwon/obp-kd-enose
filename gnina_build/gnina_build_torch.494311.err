@@ -1,0 +1,14 @@
+CMake Error at /home1/won0316/boost180/lib/cmake/Boost-1.80.0/BoostConfig.cmake:141 (find_package):
+  Could not find a configuration file for package "boost_date_time" that
+  exactly matches requested version "1.80.0".
+
+  The following configuration files were considered but not accepted:
+
+    /home1/won0316/anaconda3/envs/gnina_env/lib/cmake/boost_date_time-1.82.0/boost_date_time-config.cmake, version: 1.82.0
+    /home1/won0316/anaconda3/lib/cmake/boost_date_time-1.82.0/boost_date_time-config.cmake, version: 1.82.0
+
+Call Stack (most recent call first):
+  /home1/won0316/boost180/lib/cmake/Boost-1.80.0/BoostConfig.cmake:262 (boost_find_component)
+  gninasrc/CMakeLists.txt:4 (find_package)
+
+
